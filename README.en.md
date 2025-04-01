@@ -27,7 +27,19 @@
     git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
     ```
 
-2. Start service
+2. Configure environment variables
+
+    The system uses an `.env` file to store sensitive configuration information. Please edit this file to set secure token values and database credentials:
+    
+    ```bash
+    # Edit the .env file
+    vim .env
+    
+    # Change the values of TOKEN and JUDGE_SERVER_TOKEN from CHANGE_THIS to your own secure tokens
+    # Modify PostgreSQL database configuration (POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD) as needed
+    ```
+
+3. Start service
 
     ```bash
     docker-compose up -d

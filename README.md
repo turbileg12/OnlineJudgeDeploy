@@ -40,7 +40,19 @@ Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请
     git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
     ```
 
-2. 启动服务
+2. 配置环境变量
+
+    系统使用了 `.env` 文件来存储敏感配置信息。请编辑此文件设置安全的令牌值和数据库凭据：
+    
+    ```bash
+    # 编辑 .env 文件
+    vim .env
+    
+    # 将 TOKEN 和 JUDGE_SERVER_TOKEN 的值从 CHANGE_THIS 修改为您自己的安全令牌
+    # 根据需要修改 PostgreSQL 数据库的配置（POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD）
+    ```
+
+3. 启动服务
 
     ```bash
     docker-compose up -d

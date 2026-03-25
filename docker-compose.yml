@@ -53,6 +53,11 @@ services:
       - ../OnlineJudge/problem/urls/admin.py:/app/problem/urls/admin.py
       - ../OnlineJudge/problem/models.py:/app/problem/models.py
       - ../OnlineJudge/problem/serializers.py:/app/problem/serializers.py
+      - ../OnlineJudge/problem/views/oj.py:/app/problem/views/oj.py
+      - ../OnlineJudge/problem/urls/oj.py:/app/problem/urls/oj.py
+      - ../OnlineJudge/conf/views.py:/app/conf/views.py
+      - ../OnlineJudge/conf/serializers.py:/app/conf/serializers.py
+      - ../OnlineJudge/options/options.py:/app/options/options.py
     environment:
       - POSTGRES_DB=onlinejudge
       - POSTGRES_USER=onlinejudge

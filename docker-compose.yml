@@ -49,14 +49,29 @@ services:
       - oj-judge
     volumes:
       - ./data/backend:/data
+      # Problem module
       - ../OnlineJudge/problem/views/admin.py:/app/problem/views/admin.py
+      - ../OnlineJudge/problem/views/oj.py:/app/problem/views/oj.py
       - ../OnlineJudge/problem/urls/admin.py:/app/problem/urls/admin.py
+      - ../OnlineJudge/problem/urls/oj.py:/app/problem/urls/oj.py
       - ../OnlineJudge/problem/models.py:/app/problem/models.py
       - ../OnlineJudge/problem/serializers.py:/app/problem/serializers.py
-      - ../OnlineJudge/problem/views/oj.py:/app/problem/views/oj.py
-      - ../OnlineJudge/problem/urls/oj.py:/app/problem/urls/oj.py
+      # Conf module
       - ../OnlineJudge/conf/views.py:/app/conf/views.py
       - ../OnlineJudge/conf/serializers.py:/app/conf/serializers.py
+      - ../OnlineJudge/conf/models.py:/app/conf/models.py
+      - ../OnlineJudge/conf/urls/admin.py:/app/conf/urls/admin.py
+      # Utils module
+      - ../OnlineJudge/utils/urls.py:/app/utils/urls.py
+      - ../OnlineJudge/utils/views.py:/app/utils/views.py
+      - ../OnlineJudge/utils/api/api.py:/app/utils/api/api.py
+      # Account module
+      - ../OnlineJudge/account/views/oj.py:/app/account/views/oj.py
+      - ../OnlineJudge/account/urls/oj.py:/app/account/urls/oj.py
+      # Submission module
+      - ../OnlineJudge/submission/views/admin.py:/app/submission/views/admin.py
+      - ../OnlineJudge/submission/views/oj.py:/app/submission/views/oj.py
+      # Options
       - ../OnlineJudge/options/options.py:/app/options/options.py
     environment:
       - POSTGRES_DB=onlinejudge

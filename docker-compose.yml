@@ -56,6 +56,7 @@ services:
       - ../OnlineJudge/problem/urls/oj.py:/app/problem/urls/oj.py
       - ../OnlineJudge/problem/models.py:/app/problem/models.py
       - ../OnlineJudge/problem/serializers.py:/app/problem/serializers.py
+      - ../OnlineJudge/problem/migrations:/app/problem/migrations
       # Conf module
       - ../OnlineJudge/conf/views.py:/app/conf/views.py
       - ../OnlineJudge/conf/serializers.py:/app/conf/serializers.py
@@ -73,6 +74,8 @@ services:
       - ../OnlineJudge/submission/views/oj.py:/app/submission/views/oj.py
       # Options
       - ../OnlineJudge/options/options.py:/app/options/options.py
+      # Frontend dist
+      - ../OnlineJudgeFE/dist:/app/dist
     environment:
       - POSTGRES_DB=onlinejudge
       - POSTGRES_USER=onlinejudge
@@ -81,5 +84,5 @@ services:
       # - FORCE_HTTPS=1
       # - STATIC_CDN_HOST=cdn.oj.com
     ports:
-      - "0.0.0.0:80:8000"
+      - "0.0.0.0:8000:8000"
       - "0.0.0.0:443:1443"

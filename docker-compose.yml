@@ -57,6 +57,11 @@ services:
       - ../OnlineJudge/problem/models.py:/app/problem/models.py
       - ../OnlineJudge/problem/serializers.py:/app/problem/serializers.py
       - ../OnlineJudge/problem/migrations:/app/problem/migrations
+      # Contest module
+      - ../OnlineJudge/contest/models.py:/app/contest/models.py
+      - ../OnlineJudge/contest/serializers.py:/app/contest/serializers.py
+      - ../OnlineJudge/contest/views/admin.py:/app/contest/views/admin.py
+      - ../OnlineJudge/contest/migrations:/app/contest/migrations
       # Conf module
       - ../OnlineJudge/conf/views.py:/app/conf/views.py
       - ../OnlineJudge/conf/serializers.py:/app/conf/serializers.py
@@ -69,6 +74,7 @@ services:
       # Account module
       - ../OnlineJudge/account/views/oj.py:/app/account/views/oj.py
       - ../OnlineJudge/account/urls/oj.py:/app/account/urls/oj.py
+      - ../OnlineJudge/account/decorators.py:/app/account/decorators.py
       # Submission module
       - ../OnlineJudge/submission/views/admin.py:/app/submission/views/admin.py
       - ../OnlineJudge/submission/views/oj.py:/app/submission/views/oj.py
@@ -81,6 +87,9 @@ services:
       - POSTGRES_USER=onlinejudge
       - POSTGRES_PASSWORD=onlinejudge
       - JUDGE_SERVER_TOKEN=CHANGE_THIS
+      # make the internal nginx trust the X-Real-IP set by server.js
+      # (otherwise it overwrites it with $remote_addr = Docker gateway)
+      - LOWER_IP_HEADER=x_real_ip
       # - FORCE_HTTPS=1
       # - STATIC_CDN_HOST=cdn.oj.com
     ports:
